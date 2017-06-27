@@ -1,7 +1,7 @@
-FROM debian:latest 
+FROM debian:jessie 
 MAINTAINER Darren Williams <support@directvoip.co.uk> 
 # Install Required Dependencies 
-RUN apt-get update && add-apt-repository ppa:ondrej/php5-compat \ 
+RUN apt-get update \ 
 	&& apt-get upgrade -y \ 
 	&& apt-get install -y --force-yes \ 
 		ca-certificates \ 
