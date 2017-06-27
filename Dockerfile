@@ -36,7 +36,8 @@ RUN apt-get install -y --force-yes memcached freeswitch-meta-bare freeswitch-con
 	freeswitch-mod-sndfile freeswitch-mod-native-file freeswitch-mod-local-stream freeswitch-mod-tone-stream freeswitch-mod-lua freeswitch-meta-mod-say \ 
 	freeswitch-mod-xml-cdr freeswitch-mod-verto freeswitch-mod-callcenter freeswitch-mod-rtc freeswitch-mod-png freeswitch-mod-json-cdr freeswitch-mod-shout \ 
 	freeswitch-mod-skypopen freeswitch-mod-skypopen-dbg freeswitch-mod-sms freeswitch-mod-sms-dbg freeswitch-mod-cidlookup freeswitch-mod-memcache \ 
-	freeswitch-mod-imagick freeswitch-mod-tts-commandline freeswitch-mod-directory freeswitch-mod-flite\ && apt-get clean
+	freeswitch-mod-imagick freeswitch-mod-tts-commandline freeswitch-mod-directory freeswitch-mod-flite \ 
+	&& apt-get clean
 
 RUN usermod -a -G freeswitch www-data \ 
 	&& usermod -a -G www-data freeswitch \ 
