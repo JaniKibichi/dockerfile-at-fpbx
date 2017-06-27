@@ -61,11 +61,13 @@ RUN password=$(dd if=/dev/urandom bs=1 count=20 2>/dev/null | base64) \
 	&& apt-get clean
 
 RUN service postgresql start \ 
-	&& sleep 10 \ && echo "psql -c \"CREATE DATABASE fusionpbx\";" | su - postgres \ 
+	&& sleep 10 \ 
+	&& echo "psql -c \"CREATE DATABASE fusionpbx\";" | su - postgres \ 
 	&& echo "psql -c \"CREATE DATABASE freeswitch\";" | su - postgres \ 
 	&& echo "psql -c \"CREATE ROLE fusionpbx WITH SUPERUSER LOGIN PASSWORD '$PSQL_PASSWORD'\";" | su - postgres \ 
 	&& echo "psql -c \"CREATE ROLE freeswitch WITH SUPERUSER LOGIN PASSWORD '$PSQL_PASSWORD'\";" | su - postgres \ 
-	&& echo "psql -c \"GRANT ALL PRIVILEGES ON DATABASE fusionpbx to fusionpbx\";" | su - postgres \ && echo "psql -c \"GRANT ALL PRIVILEGES ON DATABASE freeswitch to fusionpbx\";" | su - postgres \ 
+	&& echo "psql -c \"GRANT ALL PRIVILEGES ON DATABASE fusionpbx to fusionpbx\";" | su - postgres \ 
+	&& echo "psql -c \"GRANT ALL PRIVILEGES ON DATABASE freeswitch to fusionpbx\";" | su - postgres \ 
 	&& echo "psql -c \"GRANT ALL PRIVILEGES ON DATABASE freeswitch to freeswitch\";" | su - postgres 
 
 USER root
